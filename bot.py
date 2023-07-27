@@ -11,6 +11,8 @@ last_message_flag = None
 
 send_pic = r".*?(пришли|скинь|отправь).*?(пикчу|фотку|фотографию|фотокарточку).*?"
 procces_pic = r".*?(обработ).*?(пикчу|фотку|фотографию|фотокарточку).*?"
+wassap = r"(шо ты|как ты|как.*?(дела|себя чувствуешь))"
+lu = r"(люблю тебя|тебя люблю)"
 
 @bot.message_handler(commands=["start"])
 def start(message):
@@ -28,7 +30,7 @@ def text_response(message):
         print(1)
         bot.reply_to(message, "За базаром следи, сын ебаной шлюхи, я твоей матери ебало разобью (^ ω ^)")
 
-    elif any(substr in message.text.lower() for substr in ["привет", "приффки", "приф", "хай", "хой", "хайль", "шо ты", "прив", "здарова", "панкам хой, остальным соболезную"]):
+    elif any(substr in message.text.lower() for substr in ["привет", "приффки", "приф", "хай", "хой", "хайль", "прив", "здарова", "панкам хой, остальным соболезную"]):
         bot.send_message(message.chat.id, "Привет-привет! А я уже успела по тебе соскучиться (>ω^)")
 
     elif  "анекдот" in message.text.lower():
@@ -63,6 +65,94 @@ def text_response(message):
     elif re.search(procces_pic, message.text.lower()):
         last = bot.send_message(message.chat.id , "Хорошо, кидай")
         last_message_flag = "ask_for_pic_proc"
+
+    elif re.search(lu, message.text.lower()):
+        match rnum:= rand(3):
+            case 0:
+                bot.send_message(message.chat.id , "Мяу мяу мяу мяу мяу мяу мяу мяу мяу мяу мяу мяу мяу мяу мяу мяу мяу мяу мяу мяу мяу мяу")
+            case 1:
+                bot.send_message(message.chat.id , "Мяу мяу :3")
+            case 2:
+                bot.send_message(message.chat.id , "Я тоже люблю тебя, дорогой :3")
+            case 3:
+                bot.send_message(message.chat.id , "Я очень очень сильно тебя люблю :33")
+
+    elif re.search(wassap, message.text.lower()):
+        time.sleep(2)
+        match ranf:= rand(4):
+            case 0:
+                bot.send_message(message.chat.id , "намальна :3")
+            case 1:
+                bot.send_message(message.chat.id , "никак (￣ ￣|||)")
+                time.sleep(3)
+                bot.send_message(message.chat.id , "ме(")
+            case 2:
+                bot.send_message(message.chat.id , "плохо плохо")
+                time.sleep(3)
+                bot.send_message(message.chat.id , "мне очень грусняво")
+            case 3:
+                bot.send_message(message.chat.id , "жить пока можно (｡•́︿•̀｡)")
+        time.sleep(3)
+        match rans:= rand(8):
+            case 0:
+                str = "сижу вот, "
+                match ranss := rand(3):
+                    case 0: 
+                        str += "в тт залипаю"
+                    case 1: 
+                        str += "в геншик гамаю"
+                    case 2: 
+                        str += "рисую"
+                    case 3: 
+                        str += "плету колечбки"
+                    case 4:
+                        str += "подик заправляю"
+                    case 5:
+                        str += "леплю жабок"
+                    case 6:
+                        str += "кушаю"
+                bot.send_message(message.chat.id , str)
+            case 1:
+                bot.send_message(message.chat.id , "Только что вот проснулась")
+            case 2:
+                bot.send_message(message.chat.id , "Надо пойти на кухню сделать что-нибудь покушать")
+                time.sleep(3)
+                bot.send_message(message.chat.id , "Но так не хочется вставать....")
+                time.sleep(3)
+                bot.send_message(message.chat.id , "Но так хочется есть....")
+                bot.send_message(message.chat.id , "Приезжай, покормишь меня :3")
+            case 3:
+                bot.send_message(message.chat.id , "Очень скучно, не знаю чем себя занять")
+                time.sleep(3)
+                bot.send_message(message.chat.id , "Мне кажется, я уже все тт посмотрела...")
+            case 4:
+                bot.send_message(message.chat.id , "Собираюсь вот с сыной гулять")
+            case 5:
+                bot.send_message(message.chat.id , "Хочу в туалет но не могу встать с кровати")
+            case 6:
+                bot.send_message(message.chat.id , "Жду пока мать закончит пиздеть над ухом")
+            case 7:
+                bot.send_message(message.chat.id , "Из душа тока-тока вышла")
+                time.sleep(3)
+                bot.send_message(message.chat.id , "Очень вкусно новый шампунь пахет")
+                time.sleep(3)
+                bot.send_message(message.chat.id , "Приезжай, понюхаешь :3")
+        time.sleep(2)
+        match ranser := rand(4):
+            case 0:
+                bot.send_message(message.chat.id , "Мяк мяк")
+            case 1:
+                bot.send_message(message.chat.id , "Приезжай скорее, я очень скучаю")
+            case 2:
+                bot.send_message(message.chat.id , "мяу мяу...")
+            case 3:
+                bot.send_message(message.chat.id , "......смэрць от горелого картриджа......")
+            case 4:
+                time.sleep(1)
+            case 5:
+                time.sleep(1)
+            case 6:
+                time.sleep(1)
 
     else:
         match rnum:= rand(5):
