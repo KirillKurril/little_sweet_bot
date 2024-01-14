@@ -1,5 +1,6 @@
 from PIL import Image
 from io import BytesIO
+import os
 import requests
 
 def compress_photo(bot, message):
@@ -12,6 +13,7 @@ def compress_photo(bot, message):
     proportion = 512/width if width >= height else 512/height
     new_size = (int(width * proportion), int(height * proportion))
     resized_img = img.resize(new_size)
-    photo_name = f"photo_processing/{message.from_user.username}.png"
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    photo_name = os.path.join(current_dir, f"photo_processing\\{message.from_user.username}.png")
     resized_img.save(photo_name)
     return photo_name
